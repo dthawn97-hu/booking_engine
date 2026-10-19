@@ -32,8 +32,8 @@ function Header() {
           <Drop to="/" label="Trang chủ">{CITIES.map(c => <Sub key={c} to={`/#${slug(c)}`}>{c}</Sub>)}</Drop>
           <Drop to="/dat-phong" label="Đặt phòng">{HOTELS.map(h => <Sub key={h.id} to={`/khach-san/${h.id}`}>{h.name}{h.hot && <em className="not-italic text-[10px] tracking-widest bg-sand text-white px-2">HOT</em>}</Sub>)}</Drop>
           <li><NavLink to="/dich-vu" className={top}>Dịch vụ</NavLink></li>
-          <Drop to="/tin-tuc" label="Khuyến mãi" end={false}>
-            <Sub to="/tin-tuc">Tin tức</Sub>
+          <li><NavLink to="/tin-tuc" className={top}>Tin tức</NavLink></li>
+          <Drop to="/thanh-vien/uu-dai" label="Khuyến mãi" end={false}>
             <Sub to="/thanh-vien/dang-ky">Đăng ký thành viên</Sub>
             <Sub to="/thanh-vien/uu-dai">Ưu đãi thành viên</Sub>
             <Sub to="/doi-tac">Đối tác hợp tác</Sub>
