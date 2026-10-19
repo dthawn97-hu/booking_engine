@@ -12,12 +12,12 @@ export default function StayBar({ dark }) {
   const go = e => { e.preventDefault(); nav(`/dat-phong?${new URLSearchParams(f)}`) }
   const cell = `block px-6 py-4 lg:border-r ${dark ? 'border-[#333] [&_small]:text-[#9a958f] [&_input]:[color-scheme:dark]' : 'border-line [&_small]:text-mute'} [&_small]:block [&_small]:text-[11px] [&_small]:tracking-[.14em] [&_small]:uppercase [&_select]:w-full [&_input]:w-full [&_select]:bg-transparent [&_input]:bg-transparent [&_select]:py-1 [&_input]:py-1 [&_option]:text-black`
   return (
-    <form onSubmit={go} className={`grid grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_.8fr_auto] items-stretch ${dark ? 'bg-ink text-white' : 'bg-white text-ink'}`}>
+    <form onSubmit={go} className={`grid grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_.8fr_auto] items-stretch ${dark ? 'bg-ink/85 backdrop-blur-md text-white rounded-2xl shadow-lift overflow-hidden ring-1 ring-white/10' : 'bg-white text-ink rounded-2xl border border-line my-3 overflow-hidden shadow-soft'}`}>
       <label className={`${cell} col-span-2 lg:col-span-1`}><small>Điểm đến</small><select value={f.city} onChange={set('city')}><option value="">Tất cả điểm đến</option>{CITIES.map(c => <option key={c}>{c}</option>)}</select></label>
       <label className={cell}><small>Nhận phòng</small><input type="date" required min={iso(new Date())} value={f.in} onChange={set('in')} /></label>
       <label className={cell}><small>Trả phòng</small><input type="date" required min={f.in} value={f.out} onChange={set('out')} /></label>
       <label className={`${cell} col-span-2 lg:col-span-1`}><small>Khách</small><select value={f.guests} onChange={set('guests')}>{[1, 2, 3, 4, 5, 6].map(n => <option key={n}>{n}</option>)}</select></label>
-      <Btn className="col-span-2 lg:col-span-1 h-14 lg:h-auto lg:px-11">Tìm phòng</Btn>
+      <Btn className="col-span-2 lg:col-span-1 h-14 lg:h-auto lg:px-10 m-2">Tìm phòng</Btn>
     </form>
   )
 }

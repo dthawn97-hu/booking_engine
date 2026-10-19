@@ -4,7 +4,8 @@ import Home from './pages/Home'
 import Search from './pages/Search'
 import Hotel from './pages/Hotel'
 import { Services, News, Contact } from './pages/Content'
-import { MemberRegister, MemberOffers, Partners } from './pages/Member'
+import { MemberRegister, MemberOffers } from './pages/Member'
+import Partners from './pages/Partners'
 
 export default function App() {
   return (

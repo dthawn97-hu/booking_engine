@@ -11,7 +11,7 @@ export function Services() {
         <div className="grid gap-14">
           {SERVICES.map((s, i) => (
             <article key={s.n} className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
-              <div className={`aspect-[3/2] bg-[#cfc8bf] ${i % 2 ? 'lg:order-2' : ''}`}><img src={img(s.img, 1000)} alt="" loading="lazy" className="w-full h-full object-cover" /></div>
+              <div className={`aspect-[3/2] bg-[#cfc8bf] rounded-3xl overflow-hidden shadow-soft ${i % 2 ? 'lg:order-2' : ''}`}><img src={img(s.img, 1000)} alt="" loading="lazy" className="w-full h-full object-cover" /></div>
               <div><h3 className="text-4xl lg:text-5xl">{s.n}</h3><p className="text-[#6b665f] mt-3 max-w-[44ch]">{s.d}</p></div>
             </article>
           ))}
@@ -20,7 +20,7 @@ export function Services() {
       <Section alt>
         <Head title="Dịch vụ khác" text="Gọi lễ tân hoặc đặt khi nhận phòng." />
         <dl className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8">
-          {SMALL_SERVICES.map(([n, d]) => <div key={n} className="border-t-2 border-sand pt-3"><dt className="font-serif text-2xl">{n}</dt><dd className="text-sm text-[#6b665f] mt-1">{d}</dd></div>)}
+          {SMALL_SERVICES.map(([n, d]) => <div key={n} className="bg-white rounded-2xl shadow-soft p-5 border-t-4 border-sand"><dt className="font-serif text-2xl">{n}</dt><dd className="text-sm text-[#6b665f] mt-1">{d}</dd></div>)}
         </dl>
       </Section>
     </>
@@ -37,7 +37,7 @@ export function News() {
       <PageHero title="Tin tức" text="Gợi ý địa phương và thông tin mới từ các khách sạn." photo="1495474472287-4d71bcdd2085" />
       <Wrap className="pt-10">
         <div role="tablist" className="flex flex-wrap gap-2 border-b border-line pb-4">
-          {['Tất cả', ...NEWS_CATS].map(c => <button key={c} role="tab" aria-selected={cat === c} onClick={() => setCat(c)} className={`px-4 py-1.5 text-sm border ${cat === c ? 'bg-ink text-white border-ink' : 'border-line hover:border-sand'}`}>{c}</button>)}
+          {['Tất cả', ...NEWS_CATS].map(c => <button key={c} role="tab" aria-selected={cat === c} onClick={() => setCat(c)} className={`px-5 py-2 text-sm border rounded-full transition-colors ${cat === c ? 'bg-ink text-white border-ink' : 'border-line hover:border-sand'}`}>{c}</button>)}
         </div>
       </Wrap>
       <Section>
@@ -50,7 +50,7 @@ export function News() {
               </div>
             </div>
             <aside><h3 className="text-3xl pb-3 mb-4 border-b border-line">Tin nổi bật</h3>
-              <ol className="grid gap-5">{top.map(n => <li key={n.id} className="flex gap-4"><img src={img(n.img, 200)} alt="" className="size-20 object-cover shrink-0 bg-[#cfc8bf]" /><div><p className="text-xs text-mute">{n.date}</p><p className="font-serif text-xl leading-snug">{n.n}</p></div></li>)}</ol>
+              <ol className="grid gap-5">{top.map(n => <li key={n.id} className="flex gap-4"><img src={img(n.img, 200)} alt="" className="size-20 object-cover shrink-0 rounded-xl bg-[#cfc8bf]" /><div><p className="text-xs text-mute">{n.date}</p><p className="font-serif text-xl leading-snug">{n.n}</p></div></li>)}</ol>
             </aside>
           </div>
         )}

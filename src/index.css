@@ -4,12 +4,16 @@
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --color-ink: #1c1c1c;
   --color-ink2: #141414;
-  --color-mist: #f6f4f1;
+  --color-mist: #f7f2ec;
+  --shadow-soft: 0 12px 40px -14px rgb(70 45 20 / .22);
+  --shadow-lift: 0 22px 50px -16px rgb(70 45 20 / .32);
   --color-sand: #c4a484;
   --color-sand-d: #a78767;
   --color-mute: #8b8680;
   --color-line: #e7e2dc;
 }
+html { scroll-behavior: smooth; }
+::selection { background: var(--color-sand); color: #fff; }
 body { @apply font-sans font-light text-ink bg-white antialiased; }
 h1, h2, h3 { @apply font-serif font-medium leading-tight; }
 :focus-visible { outline: 2px solid var(--color-sand); outline-offset: 3px; }
