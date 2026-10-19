@@ -1,20 +1,20 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
-import { HOTELS, ROOMS, vnd } from '../data'
+import { CITIES, HOTELS, slug } from '../data'
 
-const NAV = [['/gioi-thieu', 'Giới thiệu'], ['/dich-vu', 'Dịch vụ'], ['/uu-dai', 'Ưu đãi'], ['/tin-tuc', 'Tin tức'], ['/lien-he', 'Liên hệ']]
 const top = ({ isActive }) => `block py-3.5 lg:py-8 px-4 tracking-wider text-sm transition-colors hover:text-white ${isActive ? 'text-white' : 'text-[#b9b4ae]'}`
 const subA = 'flex justify-between items-center gap-4 px-6 py-4 border-b border-line text-sm tracking-wide text-[#2a2a2a] hover:bg-mist hover:text-sand-d'
 const reveal = 'lg:group-hover:visible lg:group-hover:opacity-100 lg:group-hover:translate-y-0 lg:group-focus-within:visible lg:group-focus-within:opacity-100 lg:group-focus-within:translate-y-0'
 
-function Drop({ to, label, children }) {
+function Drop({ to, label, children, end = true }) {
   return (
     <li className="group relative">
-      <NavLink to={to} end className={top}>{label}</NavLink>
+      <NavLink to={to} end={end} className={top}>{label}</NavLink>
       <ul className={`lg:invisible lg:opacity-0 lg:translate-y-1.5 ${reveal} transition lg:absolute lg:top-[88px] lg:left-0 lg:min-w-[260px] bg-[#fcfcfc] lg:shadow-2xl`}>{children}</ul>
     </li>
   )
 }
+const Sub = ({ to, children }) => <li><Link className={subA} to={to}>{children}</Link></li>
 
 function Header() {
   const [open, setOpen] = useState(false)
@@ -29,19 +29,17 @@ function Header() {
         </Link>
         <button className="lg:hidden text-white text-3xl" aria-label="Mở menu" aria-expanded={open} onClick={() => setOpen(!open)}>☰</button>
         <ul className={`${open ? 'flex' : 'hidden'} lg:flex absolute lg:static top-[88px] inset-x-0 bg-ink flex-col lg:flex-row lg:items-center px-6 pb-7 lg:p-0 lg:gap-1.5 max-h-[calc(100vh-88px)] overflow-auto lg:overflow-visible`}>
-          <Drop to="/" label="Trang chủ">
-            {HOTELS.map(h => <li key={h.id}><Link className={subA} to={`/#${h.id}`}>{h.name}</Link></li>)}
+          <Drop to="/" label="Trang chủ">{CITIES.map(c => <Sub key={c} to={`/#${slug(c)}`}>{c}</Sub>)}</Drop>
+          <Drop to="/dat-phong" label="Đặt phòng">{HOTELS.map(h => <Sub key={h.id} to={`/khach-san/${h.id}`}>{h.name}{h.hot && <em className="not-italic text-[10px] tracking-widest bg-sand text-white px-2">HOT</em>}</Sub>)}</Drop>
+          <li><NavLink to="/dich-vu" className={top}>Dịch vụ</NavLink></li>
+          <Drop to="/tin-tuc" label="Khuyến mãi" end={false}>
+            <Sub to="/tin-tuc">Tin tức</Sub>
+            <Sub to="/thanh-vien/dang-ky">Đăng ký thành viên</Sub>
+            <Sub to="/thanh-vien/uu-dai">Ưu đãi thành viên</Sub>
+            <Sub to="/doi-tac">Đối tác hợp tác</Sub>
           </Drop>
-          <Drop to="/phong" label="Phòng">
-            {ROOMS.map(r => (
-              <li key={r.id}><Link className={subA} to={`/phong/${r.id}`}>
-                <span>{r.name}<span className="block text-[11px] text-mute">{r.size} m² · từ {vnd(r.p)}/đêm</span></span>
-                {r.hot && <em className="not-italic text-[10px] tracking-widest bg-sand text-white px-2">HOT</em>}
-              </Link></li>
-            ))}
-          </Drop>
-          {NAV.map(([to, l]) => <li key={to}><NavLink to={to} className={top}>{l}</NavLink></li>)}
-          <li><Link to="/phong#dat-phong" className="block mt-3.5 lg:mt-0 lg:ml-7 bg-white text-black text-center font-bold text-xs tracking-[.14em] uppercase px-[18px] py-2 hover:bg-sand hover:text-white transition-colors">Đặt phòng</Link></li>
+          <li><NavLink to="/lien-he" className={top}>Liên hệ</NavLink></li>
+          <li><Link to="/dat-phong" className="block mt-3.5 lg:mt-0 lg:ml-7 bg-white text-black text-center font-bold text-xs tracking-[.14em] uppercase px-[18px] py-2 hover:bg-sand hover:text-white transition-colors">Đặt phòng</Link></li>
         </ul>
       </div>
     </header>
@@ -71,7 +69,7 @@ function Footer() {
         </div>
       </div>
       <div className="bg-[#181818]"><div className="mx-auto max-w-[1180px] px-6 py-6 flex flex-wrap gap-4 justify-between items-center">
-        <nav className="flex flex-wrap gap-x-10 gap-y-2 font-serif tracking-widest">{[['/', 'Trang chủ'], ['/phong', 'Phòng'], ['/gioi-thieu', 'Giới thiệu'], ['/phong#dat-phong', 'Đặt phòng'], ['/lien-he', 'Liên hệ']].map(([t, l]) => <Link key={l} to={t} className="hover:text-sand">{l}</Link>)}</nav>
+        <nav className="flex flex-wrap gap-x-10 gap-y-2 font-serif tracking-widest">{[['/', 'Trang chủ'], ['/dat-phong', 'Đặt phòng'], ['/dich-vu', 'Dịch vụ'], ['/tin-tuc', 'Tin tức'], ['/lien-he', 'Liên hệ']].map(([t, l]) => <Link key={l} to={t} className="hover:text-sand">{l}</Link>)}</nav>
         <div className="flex gap-10 font-serif text-xl tracking-[.12em] text-mute"><span>Eighty Eight</span><span>Alsona</span><span>Willmont</span></div>
       </div></div>
     </footer>
