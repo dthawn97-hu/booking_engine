@@ -4,7 +4,7 @@ import { HOTELS, ROOMS, img, vnd } from '../data'
 import { Btn, Wrap, iso } from '../components/ui'
 
 const MON = ['Th1', 'Th2', 'Th3', 'Th4', 'Th5', 'Th6', 'Th7', 'Th8', 'Th9', 'Th10', 'Th11', 'Th12']
-const box = 'bg-ink2 rounded-xl px-[18px] py-3.5 mb-3.5 block [&_small]:block [&_small]:text-[11px] [&_small]:tracking-[.14em] [&_small]:uppercase [&_small]:text-[#9a958f] [&_select]:w-full [&_input]:w-full [&_select]:bg-transparent [&_input]:bg-transparent [&_select]:text-base [&_input]:text-base [&_select]:py-1 [&_input]:py-1 [&_option]:text-black'
+const box = 'bg-ink2 rounded-xl px-[18px] py-3.5 mb-3.5 block [&_small]:block [&_small]:text-[11px] [&_small]:tracking-[.14em] [&_small]:uppercase [&_small]:text-[#8fa3b8] [&_select]:w-full [&_input]:w-full [&_select]:bg-transparent [&_input]:bg-transparent [&_select]:text-base [&_input]:text-base [&_select]:py-1 [&_input]:py-1 [&_option]:text-black'
 const TABS = [['chon-phong', 'Chọn phòng'], ['mo-ta', 'Mô tả'], ['tien-nghi', 'Tiện nghi'], ['vi-tri', 'Vị trí']]
 const price = (h, r) => h.p * r.m
 
@@ -46,8 +46,8 @@ function Engine({ hotel, roomId, setRoomId, init }) {
   if (ok) return (
     <aside className="bg-ink text-white p-9 text-center rounded-3xl shadow-lift lg:sticky lg:top-28">
       <h2 className="text-3xl text-sand">Đã nhận yêu cầu</h2>
-      <p className="text-[#cfcac4] my-3 mb-6">{room.name} · {hotel.name} · {nights} đêm · {vnd(total)}. Chúng tôi sẽ gọi {c.phone} để xác nhận.</p>
-      <Link to="/" className="inline-flex items-center bg-sand hover:bg-sand-d text-white font-bold text-xs tracking-[.16em] uppercase px-7 h-[50px]">Về trang chủ</Link>
+      <p className="text-[#c3d1de] my-3 mb-6">{room.name} · {hotel.name} · {nights} đêm · {vnd(total)}. Chúng tôi sẽ gọi {c.phone} để xác nhận.</p>
+      <Link to="/" className="inline-flex items-center bg-sand hover:bg-sand-d text-ink font-bold text-xs tracking-[.16em] uppercase px-7 h-[50px]">Về trang chủ</Link>
     </aside>
   )
 
@@ -63,8 +63,8 @@ function Engine({ hotel, roomId, setRoomId, init }) {
         <label className={box}><small>Số khách</small><select value={guests} onChange={e => setGuests(+e.target.value)}>{[1, 2, 3, 4, 5, 6].map(n => <option key={n}>{n}</option>)}</select></label>
         <label className={box}><small>Họ tên</small><input autoComplete="name" value={c.name} onChange={e => setC({ ...c, name: e.target.value })} /></label>
         <label className={box}><small>Số điện thoại</small><input type="tel" autoComplete="tel" value={c.phone} onChange={e => setC({ ...c, phone: e.target.value })} /></label>
-        <label className="flex gap-2.5 items-center mb-4 text-sm text-[#cfcac4] cursor-pointer"><input type="checkbox" className="accent-sand size-4" checked={bf} onChange={e => setBf(e.target.checked)} />Thêm bữa sáng (180.000₫/người/đêm)</label>
-        <dl className="border-t border-[#333] pt-4 mb-5 text-sm text-[#cfcac4] [&>div]:flex [&>div]:justify-between [&>div]:py-1">
+        <label className="flex gap-2.5 items-center mb-4 text-sm text-[#c3d1de] cursor-pointer"><input type="checkbox" className="accent-sand size-4" checked={bf} onChange={e => setBf(e.target.checked)} />Thêm bữa sáng (180.000₫/người/đêm)</label>
+        <dl className="border-t border-[#24435f] pt-4 mb-5 text-sm text-[#c3d1de] [&>div]:flex [&>div]:justify-between [&>div]:py-1">
           <div><dt>Giá phòng / đêm</dt><dd>{vnd(unit)}</dd></div>
           <div><dt>Số đêm</dt><dd>{nights}</dd></div>
           <div><dt>Bữa sáng</dt><dd>{vnd(extra)}</dd></div>
@@ -98,8 +98,8 @@ function RoomGallery({ room, hotel, onClose, onPick }) {
         {room.imgs.map((m, j) => <button key={m + j} onClick={() => setI(j)} aria-label={`Ảnh ${j + 1}`} aria-pressed={j === i} className={`shrink-0 w-24 aspect-[3/2] rounded-lg overflow-hidden ring-2 transition ${j === i ? 'ring-sand' : 'ring-transparent opacity-60 hover:opacity-100'}`}><img src={img(m, 300)} alt="" className="size-full object-cover" /></button>)}
       </div>
       <div className="p-6 flex flex-wrap items-center justify-between gap-4">
-        <div><h3 className="text-3xl">{room.name}</h3><p className="text-sm text-mute">{hotel.name} · {room.size} m² · {room.bed}</p><p className="text-xs text-[#2f7d5b] mt-1">{room.fac.join(' · ')}</p></div>
-        <div className="flex items-center gap-5"><p className="text-right"><span className="font-serif text-3xl text-[#c0501a]">{vnd(price(hotel, room))}</span><span className="block text-xs text-mute">/ đêm</span></p><Btn onClick={onPick}>Đặt phòng này</Btn></div>
+        <div><h3 className="text-3xl">{room.name}</h3><p className="text-sm text-mute">{hotel.name} · {room.size} m² · {room.bed}</p><p className="text-xs text-[#0e8c86] mt-1">{room.fac.join(' · ')}</p></div>
+        <div className="flex items-center gap-5"><p className="text-right"><span className="font-serif text-3xl text-[#0e8c86]">{vnd(price(hotel, room))}</span><span className="block text-xs text-mute">/ đêm</span></p><Btn onClick={onPick}>Đặt phòng này</Btn></div>
       </div>
     </dialog>
   )
@@ -117,12 +117,12 @@ export default function Hotel() {
   const room = ROOMS.find(r => r.id === roomId)
   const photos = [hotel.img, ...room.imgs.slice(0, 3)]
   const init = { in: q.get('in') || iso(new Date()), out: q.get('out') || iso(new Date(Date.now() + 864e5)), guests: +q.get('guests') || 2 }
-  const sec = 'mt-11 scroll-mt-28 [&_h2]:text-4xl [&_h2]:mb-3.5 [&_p]:text-[#5b564f] [&_p]:max-w-[62ch]'
+  const sec = 'mt-11 scroll-mt-28 [&_h2]:text-4xl [&_h2]:mb-3.5 [&_p]:text-[#46586c] [&_p]:max-w-[62ch]'
 
   return (
     <>
-      <section className="relative h-[300px] lg:h-[400px] bg-[#3a3a3a] bg-cover bg-center text-white flex items-end rounded-b-[2.5rem] overflow-hidden" style={{ backgroundImage: `url(${img(hotel.img, 2000)})` }}>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ink/10 to-[#2a1a0a]/80" />
+      <section className="relative h-[300px] lg:h-[400px] bg-[#1b3a5c] bg-cover bg-center text-white flex items-end rounded-b-[2.5rem] overflow-hidden" style={{ backgroundImage: `url(${img(hotel.img, 2000)})` }}>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ink/10 to-[#06182b]/80" />
         <Wrap className="relative pb-9 w-full flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
           <nav className="flex flex-wrap gap-x-10 gap-y-2 text-[13px] tracking-[.14em] uppercase">{TABS.map(([h, l]) => <a key={h} href={`#${h}`} className="pb-2 border-b-2 border-transparent hover:border-white">{l}</a>)}</nav>
           <div className="font-serif text-5xl lg:text-7xl leading-none"><span className="font-sans text-sm tracking-[.14em] uppercase mr-2.5">Từ</span>{vnd(hotel.p)}<span className="font-sans text-sm tracking-[.14em] uppercase ml-2.5">/ đêm</span></div>
@@ -135,16 +135,16 @@ export default function Hotel() {
         </div>
         <div className="grid lg:grid-cols-[1fr_400px] gap-9 items-start pb-24">
           <div>
-            <div className="aspect-[3/2] bg-[#cfc8bf] rounded-3xl overflow-hidden shadow-soft"><img src={img(photos[pic])} alt={hotel.name} className="w-full h-full object-cover" /></div>
-            <div className="grid grid-cols-4 gap-2.5 mt-2.5">{photos.map((m, i) => <button key={m + i} aria-label={`Ảnh ${i + 1}`} aria-pressed={i === pic} onClick={() => setPic(i)} className={`aspect-[3/2] bg-[#cfc8bf] rounded-xl overflow-hidden hover:opacity-100 transition-opacity ${i === pic ? '' : 'opacity-60'}`}><img src={img(m, 400)} alt="" className="w-full h-full object-cover" /></button>)}</div>
+            <div className="aspect-[3/2] bg-[#c9d6e0] rounded-3xl overflow-hidden shadow-soft"><img src={img(photos[pic])} alt={hotel.name} className="w-full h-full object-cover" /></div>
+            <div className="grid grid-cols-4 gap-2.5 mt-2.5">{photos.map((m, i) => <button key={m + i} aria-label={`Ảnh ${i + 1}`} aria-pressed={i === pic} onClick={() => setPic(i)} className={`aspect-[3/2] bg-[#c9d6e0] rounded-xl overflow-hidden hover:opacity-100 transition-opacity ${i === pic ? '' : 'opacity-60'}`}><img src={img(m, 400)} alt="" className="w-full h-full object-cover" /></button>)}</div>
 
             <div id="chon-phong" className={sec}><h2>Chọn phòng</h2>
               <ul className="grid gap-4">{ROOMS.map(r => (
                 <li key={r.id} className={`grid grid-cols-[110px_1fr] sm:grid-cols-[150px_1fr_130px_130px] items-center gap-x-5 gap-y-3 p-3 rounded-2xl border bg-white transition-shadow hover:shadow-soft ${r.id === roomId ? 'border-sand bg-mist' : 'border-line'}`}>
-                  <button onClick={() => setView(r)} aria-label={`Xem ảnh ${r.name}`} className="relative group/img overflow-hidden rounded-xl"><img src={img(r.imgs[0], 400)} alt="" loading="lazy" className="aspect-[4/3] w-full object-cover bg-[#cfc8bf] transition-transform duration-500 group-hover/img:scale-105" /><span className="absolute inset-x-0 bottom-0 bg-black/55 text-white text-xs py-1 text-center opacity-0 group-hover/img:opacity-100 transition-opacity">Xem {r.imgs.length} ảnh</span></button>
-                  <div><button onClick={() => setView(r)} className="text-left hover:text-sand-d transition-colors"><b className="font-serif text-2xl font-medium underline decoration-transparent hover:decoration-current">{r.name}</b></button><p className="!text-sm text-mute">{r.size} m² · {r.bed}</p><p className="!text-xs text-[#2f7d5b] mt-1">{r.fac.join(' · ')}</p></div>
-                  <p className="col-span-1 sm:text-right !text-ink"><span className="font-serif text-2xl text-[#c0501a]">{vnd(price(hotel, r))}</span><span className="block text-xs text-mute">/ đêm</span></p>
-                  <a href="#dat-phong" onClick={() => setRoomId(r.id)} className={`text-center px-4 py-2.5 text-sm font-medium text-white rounded-full shadow-md transition-colors ${r.id === roomId ? 'bg-ink' : 'bg-[#d9531e] hover:bg-[#b94416]'}`}>{r.id === roomId ? 'Đã chọn' : 'Đặt phòng'}</a>
+                  <button onClick={() => setView(r)} aria-label={`Xem ảnh ${r.name}`} className="relative group/img overflow-hidden rounded-xl"><img src={img(r.imgs[0], 400)} alt="" loading="lazy" className="aspect-[4/3] w-full object-cover bg-[#c9d6e0] transition-transform duration-500 group-hover/img:scale-105" /><span className="absolute inset-x-0 bottom-0 bg-black/55 text-white text-xs py-1 text-center opacity-0 group-hover/img:opacity-100 transition-opacity">Xem {r.imgs.length} ảnh</span></button>
+                  <div><button onClick={() => setView(r)} className="text-left hover:text-sand-d transition-colors"><b className="font-serif text-2xl font-medium underline decoration-transparent hover:decoration-current">{r.name}</b></button><p className="!text-sm text-mute">{r.size} m² · {r.bed}</p><p className="!text-xs text-[#0e8c86] mt-1">{r.fac.join(' · ')}</p></div>
+                  <p className="col-span-1 sm:text-right !text-ink"><span className="font-serif text-2xl text-[#0e8c86]">{vnd(price(hotel, r))}</span><span className="block text-xs text-mute">/ đêm</span></p>
+                  <a href="#dat-phong" onClick={() => setRoomId(r.id)} className={`text-center px-4 py-2.5 text-sm font-medium rounded-full shadow-md transition-colors ${r.id === roomId ? 'bg-ink text-white' : 'bg-[#1FB9B1] hover:bg-[#14a39b] text-ink'}`}>{r.id === roomId ? 'Đã chọn' : 'Đặt phòng'}</a>
                 </li>))}</ul>
             </div>
             <div id="mo-ta" className={sec}><h2>Mô tả</h2><p>{hotel.d} {room.name} rộng {room.size} m², {room.bed}, cửa sổ lớn đón sáng tự nhiên và phòng tắm riêng với vòi sen đứng.</p></div>

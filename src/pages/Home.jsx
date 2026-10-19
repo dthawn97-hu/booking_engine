@@ -29,8 +29,8 @@ export default function Home() {
 
   return (
     <>
-      <section className="relative lg:min-h-[calc(100vh-88px)] flex flex-col justify-end bg-[#2b2b2b] bg-cover bg-center text-white" style={{ backgroundImage: `url(${img('1566073771259-6a8506099945', 2000)})` }}>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ink/10 to-[#2a1a0a]/80" />
+      <section className="relative lg:min-h-[calc(100vh-88px)] flex flex-col justify-end bg-[#1b3a5c] bg-cover bg-center text-white" style={{ backgroundImage: `url(${img('1566073771259-6a8506099945', 2000)})` }}>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ink/10 to-[#06182b]/80" />
         <Wrap className="relative pt-40 pb-8 lg:pb-52 w-full">
           <h1 className="text-5xl lg:text-8xl font-normal max-w-[12ch] [text-shadow:0_2px_30px_rgb(0_0_0/.35)]">Ở lại đủ lâu để thấy thành phố chậm lại</h1>
         </Wrap>
@@ -42,9 +42,9 @@ export default function Home() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
           {TYPES.map(t => (
             <button key={t} onClick={() => { reset(setType)(t); document.getElementById('diem-den')?.scrollIntoView({ behavior: 'smooth' }) }} className="group text-center">
-              <span className="block mx-auto size-36 lg:size-44 rounded-full overflow-hidden bg-[#cfc8bf] ring-4 ring-white shadow-soft group-hover:shadow-lift group-hover:-translate-y-1 transition-all duration-300"><img src={img(TYPE_INFO[t][2], 500)} alt="" loading="lazy" className="size-full object-cover transition-transform duration-700 group-hover:scale-110" /></span>
+              <span className="block mx-auto size-36 lg:size-44 rounded-full overflow-hidden bg-[#c9d6e0] ring-4 ring-white shadow-soft group-hover:shadow-lift group-hover:-translate-y-1 transition-all duration-300"><img src={img(TYPE_INFO[t][2], 500)} alt="" loading="lazy" className="size-full object-cover transition-transform duration-700 group-hover:scale-110" /></span>
               <b className="block font-serif text-2xl font-semibold mt-4">{TYPE_INFO[t][0]}</b>
-              <span className="block text-sm text-[#6b665f] mt-1 max-w-[24ch] mx-auto">{TYPE_INFO[t][1]}</span>
+              <span className="block text-sm text-[#51647a] mt-1 max-w-[24ch] mx-auto">{TYPE_INFO[t][1]}</span>
             </button>
           ))}
         </div>
@@ -58,22 +58,22 @@ export default function Home() {
           </div>
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-1 mb-8 lg:ml-[272px] text-sm">
-          {['', ...areas].map(a => <button key={a} onClick={() => reset(setArea)(a)} className={`py-1 ${(area === a || (!areas.includes(area) && !a)) ? 'text-[#c0501a] font-medium' : 'hover:text-sand-d'}`}>{a || 'Tất cả'}</button>)}
+          {['', ...areas].map(a => <button key={a} onClick={() => reset(setArea)(a)} className={`py-1 ${(area === a || (!areas.includes(area) && !a)) ? 'text-[#0e8c86] font-medium' : 'hover:text-sand-d'}`}>{a || 'Tất cả'}</button>)}
         </div>
 
         <div className="grid lg:grid-cols-[240px_1fr] gap-8">
           <div className="flex lg:flex-col gap-3 overflow-x-auto">
             {['', ...TYPES].map(t => (
-              <button key={t} onClick={() => reset(setType)(t)} aria-pressed={type === t} className={`shrink-0 px-6 py-5 border rounded-2xl bg-white text-center font-serif text-xl transition-colors ${type === t ? 'border-[#c0501a]' : 'border-line hover:border-sand'}`}>{t || 'Tất cả loại'}</button>
+              <button key={t} onClick={() => reset(setType)(t)} aria-pressed={type === t} className={`shrink-0 px-6 py-5 border rounded-2xl bg-white text-center font-serif text-xl transition-colors ${type === t ? 'border-[#0e8c86]' : 'border-line hover:border-sand'}`}>{t || 'Tất cả loại'}</button>
             ))}
           </div>
           <div>
-            {list.length === 0 ? <p className="py-16 text-center text-[#6b665f]">Chưa có khách sạn loại này tại {city}.</p> : (
+            {list.length === 0 ? <p className="py-16 text-center text-[#51647a]">Chưa có khách sạn loại này tại {city}.</p> : (
               <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
                 {list.slice(cur * PER_PAGE, (cur + 1) * PER_PAGE).map(h => (
                   <Link key={h.id} to={`/khach-san/${h.id}`} className="group block bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-lift hover:-translate-y-1 transition-all duration-300">
-                    <div className="aspect-[16/10] bg-[#cfc8bf] overflow-hidden"><img src={img(h.img, 700)} alt="" loading="lazy" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" /></div>
-                    <div className="p-5"><h3 className="font-sans font-medium text-lg leading-snug min-h-[3.2rem]">{h.name}</h3><span className="inline-block mt-1 text-[#c0501a] font-medium">Đặt phòng <span className="inline-block transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5">↗</span></span></div>
+                    <div className="aspect-[16/10] bg-[#c9d6e0] overflow-hidden"><img src={img(h.img, 700)} alt="" loading="lazy" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" /></div>
+                    <div className="p-5"><h3 className="font-sans font-medium text-lg leading-snug min-h-[3.2rem]">{h.name}</h3><span className="inline-block mt-1 text-[#0e8c86] font-medium">Đặt phòng <span className="inline-block transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5">↗</span></span></div>
                   </Link>
                 ))}
               </div>

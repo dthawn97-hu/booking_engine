@@ -2,15 +2,15 @@
 @theme {
   --font-sans: 'Be Vietnam Pro', system-ui, sans-serif;
   --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --color-ink: #1c1c1c;
-  --color-ink2: #141414;
-  --color-mist: #f7f2ec;
-  --shadow-soft: 0 12px 40px -14px rgb(70 45 20 / .22);
-  --shadow-lift: 0 22px 50px -16px rgb(70 45 20 / .32);
-  --color-sand: #c4a484;
-  --color-sand-d: #a78767;
-  --color-mute: #8b8680;
-  --color-line: #e7e2dc;
+  --color-ink: #0F2B4A;
+  --color-ink2: #0b2038;
+  --color-mist: #eff6f8;
+  --shadow-soft: 0 12px 40px -14px rgb(15 43 74 / .22);
+  --shadow-lift: 0 22px 50px -16px rgb(15 43 74 / .32);
+  --color-sand: #1FB9B1;
+  --color-sand-d: #0e8c86;
+  --color-mute: #7a8da1;
+  --color-line: #dce6ee;
 }
 html { scroll-behavior: smooth; }
 ::selection { background: var(--color-sand); color: #fff; }
